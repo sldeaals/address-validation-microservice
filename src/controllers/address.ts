@@ -16,9 +16,9 @@ export async function validateAddressController(
       status: 200,
       message: 'Address validated successfully',
     });
-  } catch (error: unknown) {
+  } catch (error) {
     sendErrorResponse(res, {
-      error: error,
+      error: error instanceof Error ? error.message : 'Unknown error',
       status: 500,
       message: 'Failed to validate address',
     });
