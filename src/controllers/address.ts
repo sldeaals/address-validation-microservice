@@ -1,18 +1,26 @@
 import { Request, Response } from 'express';
 import { validateCountry } from '../services';
+import { sendApiResponse, sendErrorResponse } from '../utils';
 
-export async function validateAddressController(req: Request, res: Response): Promise<void> {
-    try {
-        const { country } = req.body;
-        const isValidAddress = await validateCountry(country);
+export async function validateAddressController(
+  req: Request,
+  res: Response
+): Promise<void> {
+  try {
+    const { country } = req.body;
+    const validatedAddress = await validateCountry(country);
 
-        if (isValidAddress) {
-            res.json({ valid: true, message: 'Address is valid' });
-        } else {
-            res.json({ valid: false, message: 'Invalid address' });
-        }
-    } catch (error) {
-        console.error('Error validating address:', error);
-        res.json({ error: 'Internal server error' });
-    }
+    sendApiResponse(res, {
+      data: validatedAddress,
+      success: true,
+      status: 200,
+      message: 'Address validated successfully',
+    });
+  } catch (error: unknown) {
+    sendErrorResponse(res, {
+      error: error,
+      status: 500,
+      message: 'Failed to validate address',
+    });
+  }
 }
