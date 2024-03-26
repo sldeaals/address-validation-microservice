@@ -1,6 +1,6 @@
 import { Response } from 'express';
 
-interface ApiResponseOptions<T> {
+export interface ApiResponse<T> {
   data?: T;
   success: boolean;
   status: number;
@@ -9,7 +9,7 @@ interface ApiResponseOptions<T> {
 
 export const sendApiResponse = <T>(
   res: Response,
-  { data, success, status, message }: ApiResponseOptions<T>
+  { data, success, status, message }: ApiResponse<T>
 ) => {
   res.status(status).json({ success, data, message });
 };
