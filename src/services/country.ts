@@ -15,7 +15,6 @@ export async function validateCountry(
       return false;
     }
   } catch (error) {
-    console.error('Error validating country:', error);
     throw new Error('Failed to validate country');
   }
 }
