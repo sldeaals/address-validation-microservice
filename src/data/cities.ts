@@ -1,4 +1,4 @@
-[
+export const cities = [
   {
     "countryCode": "DO",
     "postalCode": "10101",
