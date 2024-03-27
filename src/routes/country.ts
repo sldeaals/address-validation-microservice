@@ -3,4 +3,6 @@ import { validateAddressController } from '../controllers';
 
 const addressRoutes = express.Router();
 
-export const validateAddress = addressRoutes.post('/', validateAddressController);
+addressRoutes.post('/', validateAddressController);
+
+export default addressRoutes;
