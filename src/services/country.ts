@@ -1,4 +1,5 @@
 import fetch from 'node-fetch';
+import { handleError } from '../utils';
 
 export async function validateCountry(
   countryCode: string
@@ -14,7 +15,8 @@ export async function validateCountry(
     } else {
       return false;
     }
-  } catch (error) {
-    throw new Error('Failed to validate country');
+  } catch (error: unknown) {
+    handleError(error, 'Failed to validate country');
+    return false;
   }
 }

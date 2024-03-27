@@ -1,8 +1,12 @@
 import express from 'express';
-import { validateAddress } from './country';
+import addressRoutes from './country';
+import customRoutes from './custom';
+import citysRoutes from './city';
 
-const router = express.Router();
+const routes = express.Router();
 
-router.use('/address', validateAddress);
+routes.use('/address', addressRoutes);
+routes.use('/custom', customRoutes);
+routes.use('/city', citysRoutes);
 
-export default router;
+export default routes;
