@@ -19,14 +19,11 @@ export async function validateAddressController(
 
     sendApiResponse(res, {
       data: validatedAddress,
-      success: true,
-      status: 200,
       message: 'Address validated successfully',
     });
   } catch (error) {
     sendErrorResponse(res, {
       error: error instanceof Error ? error.message : 'Unknown error',
-      status: 500,
       message: 'Failed to validate address',
     });
   }

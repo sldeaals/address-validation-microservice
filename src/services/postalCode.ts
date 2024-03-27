@@ -1,4 +1,5 @@
-import { City, getCitiesByCountry } from "./city";
+import { getCitiesByCountry } from "./city";
+import { City } from "../models";
 import { cities } from '../data';
 
 export function getSectorsByPostalCode(postalCode: string): City[] | [] {
@@ -7,5 +8,5 @@ export function getSectorsByPostalCode(postalCode: string): City[] | [] {
 
 export function postalCodeExistsForCity(countryCode: string, cityName: string, postalCode: string): boolean {
   const cities = getCitiesByCountry(countryCode);
-  return cities.some(city => city.placeName === cityName && city.postalCode === postalCode);
+  return cities.some(city => city.name === cityName && city.postalCode === postalCode);
 }

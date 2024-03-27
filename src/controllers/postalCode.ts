@@ -12,14 +12,11 @@ export async function getSectorsByPostalCodeController(
 
     sendApiResponse(res, {
       data: cities,
-      success: true,
-      status: 200,
       message: 'Fetched sectors successfully',
     });
   } catch (error) {
     sendErrorResponse(res, {
       error: error instanceof Error ? error.message : 'Unknown error',
-      status: 500,
       message: 'Failed to get sectors by postal code',
     });
   }
