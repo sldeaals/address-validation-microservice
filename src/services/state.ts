@@ -1,12 +1,5 @@
-import { City } from "./city";
+import { State } from "../models";
 import { states } from '../data';
-
-export interface State {
-    countryCode: string;
-    stateCode: string;
-    name: string;
-    cities: City[] | null | undefined;
-  }
 
 export function getStatesByCountryCode(countryCode: string): State[] | [] {
   return states.filter(state => state.countryCode === countryCode);

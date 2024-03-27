@@ -1,5 +1,14 @@
 import Joi from 'joi';
 
+export interface Address {
+  city: string;
+  country: string;
+  line1: string;
+  line2?: string | null;
+  postalCode: string;
+  state?: string | null;
+}
+
 export const addressSchema = Joi.object({
   city: Joi.string().required(),
   country: Joi.string().uppercase().pattern(/^[A-Z]{2,3}$/).required(),

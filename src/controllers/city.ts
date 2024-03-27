@@ -1,11 +1,12 @@
 import { Request, Response } from 'express';
-import { City, getCitiesByCountryFromFile, getCitiesByCountry } from '../services/city';
+import { getCitiesByCountryFromFile, getCitiesByCountry } from '../services/city';
+import { City } from "../models";
 import {
   ApiResponse,
   sendApiResponse,
   sendErrorResponse,
 } from '../utils/apiResponse';
-//getCitiesByCountry
+
 export async function getCitiesByCountryFromFileController(
   req: Request,
   res: Response<ApiResponse<City[]>>
