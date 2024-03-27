@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { validateCountry } from '../services';
+import { validateCountry, cityExistsForCountry, postalCodeExistsForCity, stateExistsForCountry } from '../services';
 import { sendApiResponse, sendErrorResponse } from '../utils';
 
 export async function validateAddressController(
@@ -7,8 +7,15 @@ export async function validateAddressController(
   res: Response
 ): Promise<void> {
   try {
-    const { country } = req.body;
+    const { country, city, postalCode, state } = req.body;
     const validatedAddress = await validateCountry(country);
+    const isValidCity = cityExistsForCountry(country, city);
+    const isValidPostalCode = postalCodeExistsForCity(country, city, postalCode);
+    const isValidState = stateExistsForCountry(country, state);
+
+    if (!isValidCity || !isValidPostalCode || !isValidState) {
+      throw new Error(`Invalid city or postal code or state`);
+    }
 
     sendApiResponse(res, {
       data: validatedAddress,
