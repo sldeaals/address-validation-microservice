@@ -12,14 +12,11 @@ export async function getStatesByCountryCodeController(
 
     sendApiResponse(res, {
       data: cities,
-      success: true,
-      status: 200,
       message: 'Fetched states successfully',
     });
   } catch (error) {
     sendErrorResponse(res, {
       error: error instanceof Error ? error.message : 'Unknown error',
-      status: 500,
       message: 'Failed to get states by country code',
     });
   }

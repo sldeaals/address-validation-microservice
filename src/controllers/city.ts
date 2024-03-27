@@ -15,14 +15,11 @@ export async function getCitiesByCountryFromFileController(
     const cities = await getCitiesByCountryFromFile(countryCode);
     sendApiResponse(res, {
       data: cities,
-      success: true,
-      status: 200,
       message: 'Cities fetched successfully',
     });
   } catch (error) {
     sendErrorResponse(res, {
       error: error instanceof Error ? error.message : 'Unknown error',
-      status: 500,
       message: 'Failed to fetch cities',
     });
   }
@@ -37,14 +34,11 @@ export async function getCitiesByCountryController(
     const cities = getCitiesByCountry(countryCode);
     sendApiResponse(res, {
       data: cities,
-      success: true,
-      status: 200,
       message: 'Cities fetched successfully',
     });
   } catch (error) {
     sendErrorResponse(res, {
       error: error instanceof Error ? error.message : 'Unknown error',
-      status: 500,
       message: 'Failed to fetch cities',
     });
   }
