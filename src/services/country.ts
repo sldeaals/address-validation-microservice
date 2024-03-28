@@ -1,20 +1,30 @@
 import fetch from 'node-fetch';
 import { handleError } from '../utils';
 
-export async function validateCountry(
-  countryCode: string
-): Promise<boolean> {
+async function fetchCountryData(countryCode: string) {
   try {
-    const response = await fetch(
-      `https://restcountries.com/v3.1/alpha/${countryCode}`
-    );
-    const data = await response.json();
+    const response = await fetch(`https://restcountries.com/v3.1/alpha/${countryCode}`);
+    return await response.json();
+  } catch (error: unknown) {
+    handleError(error, 'Failed to fetch country');
+    throw error;
+  }
+}
 
+export async function getCountryByCode(countryCode: string) {
+  return await fetchCountryData(countryCode);
+}
+
+export async function validateCountry(countryCode: string): Promise<boolean> {
+  try {
+    const data = await fetchCountryData(countryCode);
+    
     if (data) {
       return true;
     } else {
       return false;
     }
+
   } catch (error: unknown) {
     handleError(error, 'Failed to validate country');
     return false;

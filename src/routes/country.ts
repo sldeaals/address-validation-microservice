@@ -1,8 +1,8 @@
 import express from 'express';
-import { validateAddressController } from '../controllers';
+import { getCountryByCodeController } from '../controllers';
 
-const addressRoutes = express.Router();
+const countryRoutes = express.Router();
 
-addressRoutes.post('/', validateAddressController);
+countryRoutes.get('/:countryCode', getCountryByCodeController);
 
-export default addressRoutes;
+export default countryRoutes;
