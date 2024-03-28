@@ -6,6 +6,7 @@ import rateLimit from 'express-rate-limit';
 // import sslRedirect from 'express-sslify';
 import { generateRandomString  } from './utils';
 import routes from './routes';
+import swagger from './swagger';
 
 const app = express();
 
@@ -47,5 +48,7 @@ app.use(
 );
 
 app.use('/api', routes);
+
+swagger(app);
 
 export default app;
