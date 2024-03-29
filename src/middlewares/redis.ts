@@ -21,10 +21,9 @@ export const checkCache = async (
   const cachedData = await redis.get(req.originalUrl);
 
   if (cachedData) {
-    console.log('Mando el cache');
     sendApiResponse(res, {
       data: JSON.parse(cachedData),
-      message: 'Fetched country successfully',
+      message: 'Success',
     });
   } else {
     next();
