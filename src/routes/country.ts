@@ -1,5 +1,6 @@
 import express from 'express';
 import { getCountryByCodeController } from '../controllers';
+import { checkCache } from '../middlewares';
 
 const countryRoutes = express.Router();
 
@@ -28,6 +29,6 @@ const countryRoutes = express.Router();
  *       500:
  *         description: Internal server error.
  */
-countryRoutes.get('/:countryCode', getCountryByCodeController);
+countryRoutes.get('/:countryCode', checkCache, getCountryByCodeController);
 
 export default countryRoutes;
