@@ -1,4 +1,5 @@
 import { readTabDelimitedTextFile, convertTextToJson, writeJsonFile } from '../utils';
+import { logger } from '../middlewares';
 
 export async function processTabDelimitedTextFile(): Promise<string> {
   try {
@@ -12,7 +13,7 @@ export async function processTabDelimitedTextFile(): Promise<string> {
 
     return jsonFileName;
   } catch (error) {
-    console.error('Error processing tab-delimited text file:', error);
+    logger.error(`Error processing tab-delimited text file: ${error}`);
     throw error;
   }
 }

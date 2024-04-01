@@ -1,5 +1,6 @@
 import fs from 'fs';
 import path from 'path';
+import { logger } from '../middlewares';
 
 interface CitiesData {
   countryCode: string;
@@ -17,7 +18,7 @@ export function readTabDelimitedTextFile(url: string): string[] {
 
     return lines;
   } catch (error) {
-    console.error('Error reading tab-delimited text file:', error);
+    logger.error(`Error reading tab-delimited text file: ${error}`);
     throw error;
   }
 }
@@ -41,7 +42,7 @@ export function convertTextToJson(lines: string[]): CitiesData[] {
 
     return jsonData;
   } catch (error) {
-    console.error('Error converting text to JSON:', error);
+    logger.error(`Error converting text to JSON: ${error}`);
     throw error;
   }
 }
@@ -60,7 +61,7 @@ export function writeJsonFile(fileName: string, jsonData: CitiesData[], outputDi
 
     return outputFileName;
   } catch (error) {
-    console.error('Error writing JSON data to file:', error);
+    logger.error(`Error writing JSON data to file: ${error}`);
     throw error;
   }
 }

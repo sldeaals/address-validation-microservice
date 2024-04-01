@@ -16,7 +16,6 @@ export async function processTextFileController(
       message: `JSON file '${jsonFileName}' created successfully.`,
     });
   } catch (error) {
-    console.error("Error processing text file:", error);
     sendErrorResponse(res, {
       error: error instanceof Error ? error.message : "Unknown error",
       message: "Failed to process text file.",
