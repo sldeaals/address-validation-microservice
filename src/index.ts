@@ -1,8 +1,8 @@
 import cluster from 'cluster';
 import os from 'os';
 import dotenv from 'dotenv';
-import app from './app';
 import { logger } from './middlewares';
+import { createApp } from './app';
 
 dotenv.config();
 
@@ -22,6 +22,7 @@ if (cluster.isPrimary) {
     logger.warn(`Worker ${worker.process.pid} died`);
   });
 } else {
+  const app = createApp();
   app.listen(PORT, () => {
     logger.info(`Worker ${process.pid} started`);
   });
