@@ -19,6 +19,7 @@ function configureMiddlewares(app: Express): void {
       frameguard: { action: 'deny' },
       noSniff: true,
       xssFilter: true,
+      referrerPolicy: { policy: "same-origin" },
     })
   );
   const limiter = rateLimit({
