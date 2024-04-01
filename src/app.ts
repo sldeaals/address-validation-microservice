@@ -2,12 +2,15 @@ import express, { Express } from 'express';
 import session from 'express-session';
 import helmet from 'helmet';
 import rateLimit from 'express-rate-limit';
+import compression from 'compression';
 // TODO: Uncomment when production deployment
 // import sslRedirect from 'express-sslify';
 import { generateRandomString } from './utils';
 import routes from './routes';
+import { swagger, createRedisClient } from './middlewares';
 
 function configureMiddlewares(app: Express): void {
+  app.use(compression());
   // TODO: Uncomment when production deployment
   // app.use(sslRedirect.HTTPS({ trustProtoHeader: true }));
   app.use(
@@ -48,5 +51,7 @@ export function createApp(): Express {
   const app = express();
   configureMiddlewares(app);
   setupRoutes(app);
+  swagger(app);
+  createRedisClient();
   return app;
 }
