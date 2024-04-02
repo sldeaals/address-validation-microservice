@@ -34,14 +34,11 @@ districtRoutes.get('/:countryCode', getDistrictsByCountryController);
 
 /**
  * @swagger
- * tags:
- *   - name: Postal Code
- *     description: Operations related to postal codes
- * /api/postal-code/{postalCode}:
+ * /api/district/{postalCode}:
  *   get:
  *     summary: Get districts by postal code
  *     description: Retrieve districts by postal code.
- *     tags: [Postal Code]
+ *     tags: [District]
  *     parameters:
  *       - in: path
  *         name: postalCode
