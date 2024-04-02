@@ -14,3 +14,7 @@ export function postalCodeExistsForCity(countryCode: string, cityName: string, p
   const cities = getCitiesByCountry(countryCode);
   return cities.some(city => city.name === cityName && city?.postalCodes.includes(postalCode));
 }
+
+export function getCitiesByPostalCode(postalCode: string): City[] {
+  return cities.filter(city => city.postalCodes.includes(postalCode));
+}
