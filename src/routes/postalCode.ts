@@ -1,6 +1,6 @@
 import express from 'express';
 import {
-    getSectorsByPostalCodeController
+    getDistrictsByPostalCodeController
 } from '../controllers';
 
 const postalCodeRoutes = express.Router();
@@ -12,8 +12,8 @@ const postalCodeRoutes = express.Router();
  *     description: Operations related to postal codes
  * /api/postal-code/{postalCode}:
  *   get:
- *     summary: Get sectors by postal code
- *     description: Retrieve sectors by postal code.
+ *     summary: Get districts by postal code
+ *     description: Retrieve districts by postal code.
  *     tags: [Postal Code]
  *     parameters:
  *       - in: path
@@ -24,7 +24,7 @@ const postalCodeRoutes = express.Router();
  *           type: string
  *     responses:
  *       200:
- *         description: Successful response with sectors.
+ *         description: Successful response with districts.
  *       400:
  *         description: Invalid postal code.
  *       404:
@@ -32,6 +32,6 @@ const postalCodeRoutes = express.Router();
  *       500:
  *         description: Internal server error.
  */
-postalCodeRoutes.get('/:postalCode', getSectorsByPostalCodeController);
+postalCodeRoutes.get('/:postalCode', getDistrictsByPostalCodeController);
 
 export default postalCodeRoutes;

@@ -2,7 +2,7 @@ import { getDistrictsByCountry } from "./district";
 import { District } from "../models";
 import { districts } from '../data';
 
-export function getSectorsByPostalCode(postalCode: string): District[] | [] {
+export function getDistrictsByPostalCode(postalCode: string): District[] | [] {
   return districts.filter(district => district?.postalCode === postalCode);
 }
 

@@ -1,23 +1,23 @@
 import { Request, Response } from 'express';
-import { getSectorsByPostalCode } from '../services';
+import { getDistrictsByPostalCode } from '../services';
 import { sendApiResponse, sendErrorResponse } from '../utils';
 
-export async function getSectorsByPostalCodeController(
+export async function getDistrictsByPostalCodeController(
   req: Request,
   res: Response
 ): Promise<void> {
   try {
     const { postalCode } = req.params;
-    const cities = getSectorsByPostalCode(postalCode);
+    const cities = getDistrictsByPostalCode(postalCode);
 
     sendApiResponse(res, {
       data: cities,
-      message: 'Fetched sectors successfully',
+      message: 'Fetched districts successfully',
     });
   } catch (error) {
     sendErrorResponse(res, {
       error: error instanceof Error ? error.message : 'Unknown error',
-      message: 'Failed to get sectors by postal code',
+      message: 'Failed to get districts by postal code',
     });
   }
 }
