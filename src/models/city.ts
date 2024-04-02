@@ -3,4 +3,5 @@ export interface City {
   stateCode: string | number;
   cityId: string | number;
   name: string;
+  postalCodes: string[];
 }
