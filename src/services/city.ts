@@ -9,3 +9,8 @@ export function cityExistsForCountry(countryCode: string, cityName: string): boo
   const cities = getCitiesByCountry(countryCode);
   return cities.some(city => city.name === cityName);
 }
+
+export function postalCodeExistsForCity(countryCode: string, cityName: string, postalCode: string): boolean {
+  const cities = getCitiesByCountry(countryCode);
+  return cities.some(city => city.name === cityName && city?.postalCodes.includes(postalCode));
+}
