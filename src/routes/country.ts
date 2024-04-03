@@ -30,7 +30,7 @@ countryRoutes.get('/:countryCode', checkCache, getCountryByCodeController);
 
 /**
  * @swagger
- * /api/country/search/{countryCode}:
+ * /api/country/name/{countryCode}:
  *   get:
  *     summary: Get country by name
  *     description: Retrieve country information by name.
@@ -50,6 +50,6 @@ countryRoutes.get('/:countryCode', checkCache, getCountryByCodeController);
  *       500:
  *         description: Internal server error.
  */
-countryRoutes.get('/search/:name', checkCache, fetchCountriesByNameController);
+countryRoutes.get('/name/:name', checkCache, fetchCountriesByNameController);
 
 export default countryRoutes;

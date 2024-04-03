@@ -35,7 +35,7 @@ stateRoutes.get('/country/:countryCode', getStatesByCountryCodeController);
 
 /**
  * @swagger
- * /api/state/{name}:
+ * /api/state/name/{name}:
  *   get:
  *     summary: Get states
  *     description: Retrieve a list of states.
@@ -57,6 +57,6 @@ stateRoutes.get('/country/:countryCode', getStatesByCountryCodeController);
  *       500:
  *         description: Internal server error.
  */
-stateRoutes.get('/:name', getStatesByNameController);
+stateRoutes.get('/name/:name', getStatesByNameController);
 
 export default stateRoutes;

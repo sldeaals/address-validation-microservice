@@ -61,7 +61,7 @@ cityRoutes.get('/postal-code/:postalCode', getCitiesByPostalCodeController);
 
 /**
  * @swagger
- * /api/city/{name}:
+ * /api/city/name/{name}:
  *   get:
  *     summary: Get cities
  *     description: Retrieve a list of cities.
@@ -83,6 +83,6 @@ cityRoutes.get('/postal-code/:postalCode', getCitiesByPostalCodeController);
  *       500:
  *         description: Internal server error.
  */
-cityRoutes.get('/:name', getCitiesByNameController);
+cityRoutes.get('/name/:name', getCitiesByNameController);
 
 export default cityRoutes;

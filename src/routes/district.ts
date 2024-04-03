@@ -61,7 +61,7 @@ districtRoutes.get('/postal-code/:postalCode', getDistrictsByPostalCodeControlle
 
 /**
  * @swagger
- * /api/district/{name}:
+ * /api/district/name/{name}:
  *   get:
  *     summary: Get districts
  *     description: Retrieve a list of districts.
@@ -83,6 +83,6 @@ districtRoutes.get('/postal-code/:postalCode', getDistrictsByPostalCodeControlle
  *       500:
  *         description: Internal server error.
  */
-districtRoutes.get('/:name', getDistrictsByNameController);
+districtRoutes.get('/name/:name', getDistrictsByNameController);
 
 export default districtRoutes;
