@@ -1,5 +1,5 @@
 import { State } from "../models";
-import { states } from '../data';
+import { states } from '../mocks';
 import { searchByField } from '../utils';
 
 export function getStatesByCountryCode(countryCode: string): State[] | [] {

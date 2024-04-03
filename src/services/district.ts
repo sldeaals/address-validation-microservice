@@ -1,4 +1,4 @@
-import { districts } from '../data';
+import { districts } from '../mocks';
 import { District } from '../models';
 import { searchByField } from '../utils';
 
