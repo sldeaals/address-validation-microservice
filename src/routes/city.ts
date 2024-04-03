@@ -77,7 +77,7 @@ cityRoutes.get('/postal-code/:postalCode', getCitiesByPostalCodeController);
  *       200:
  *         description: Successful response with a list of cities.
  *       400:
- *         description: Invalid country code.
+ *         description: Invalid name.
  *       404:
  *         description: Country not found.
  *       500:

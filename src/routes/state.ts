@@ -1,6 +1,7 @@
 import express from 'express';
 import {
-    getStatesByCountryCodeController
+    getStatesByCountryCodeController,
+    getStatesByNameController,
 } from '../controllers';
 
 const stateRoutes = express.Router();
@@ -30,6 +31,32 @@ const stateRoutes = express.Router();
  *       500:
  *         description: Internal server error.
  */
-stateRoutes.get('/:countryCode', getStatesByCountryCodeController);
+stateRoutes.get('/country/:countryCode', getStatesByCountryCodeController);
+
+/**
+ * @swagger
+ * /api/state/{name}:
+ *   get:
+ *     summary: Get states
+ *     description: Retrieve a list of states.
+ *     tags: [State]
+ *     parameters:
+ *       - in: path
+ *         name: name
+ *         description: name
+ *         required: true
+ *         schema:
+ *           type: string
+ *     responses:
+ *       200:
+ *         description: Successful response with a list of states.
+ *       400:
+ *         description: Invalid name.
+ *       404:
+ *         description: State not found.
+ *       500:
+ *         description: Internal server error.
+ */
+stateRoutes.get('/:name', getStatesByNameController);
 
 export default stateRoutes;
