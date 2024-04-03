@@ -1,14 +1,11 @@
 import express from 'express';
-import { getCountryByCodeController } from '../controllers';
+import { getCountryByCodeController, fetchCountriesByNameController } from '../controllers';
 import { checkCache } from '../middlewares';
 
 const countryRoutes = express.Router();
 
 /**
  * @swagger
- * tags:
- *   - name: Country
- *     description: Operations related to countries
  * /api/country/{countryCode}:
  *   get:
  *     summary: Get country by country code
@@ -30,5 +27,29 @@ const countryRoutes = express.Router();
  *         description: Internal server error.
  */
 countryRoutes.get('/:countryCode', checkCache, getCountryByCodeController);
+
+/**
+ * @swagger
+ * /api/country/search/{countryCode}:
+ *   get:
+ *     summary: Get country by name
+ *     description: Retrieve country information by name.
+ *     tags: [Country]
+ *     parameters:
+ *       - in: path
+ *         name: name
+ *         description: country name
+ *         required: true
+ *         schema:
+ *           type: string
+ *     responses:
+ *       200:
+ *         description: Successful response with country(ies) information.
+ *       404:
+ *         description: Contries not found.
+ *       500:
+ *         description: Internal server error.
+ */
+countryRoutes.get('/search/:name', checkCache, fetchCountriesByNameController);
 
 export default countryRoutes;
