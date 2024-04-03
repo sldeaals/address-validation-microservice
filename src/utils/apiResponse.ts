@@ -8,18 +8,18 @@ export interface ApiResponse<T> {
   message?: string | null;
 }
 
-export const sendApiResponse = <T>(
+export function sendApiResponse <T>(
   res: Response,
   { data, success = true, status = 200, message }: ApiResponse<T>
-) => {
+) {
   logger.info(message);
   return res.status(status).json({ success, data, message });
-};
+}
 
-export const sendErrorResponse = (
+export function sendErrorResponse (
   res: Response,
   { error, status = 500, message }: { error: unknown, status?: number, message?: string }
-) => {
+) {
   logger.warn(message);
   return res.status(status).json({ success: false, error, message });
-};
+}

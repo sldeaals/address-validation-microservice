@@ -1,5 +1,9 @@
 import { Request, Response } from 'express';
-import { getDistrictsByCountry, getDistrictsByPostalCode } from '../services';
+import { 
+  getDistrictsByCountry,
+  getDistrictsByPostalCode,
+  getDistrictsByName,
+} from '../services';
 import { City } from '../models';
 import {
   ApiResponse,
@@ -42,6 +46,26 @@ export async function getDistrictsByPostalCodeController(
     sendErrorResponse(res, {
       error: error instanceof Error ? error.message : 'Unknown error',
       message: 'Failed to get districts by postal code',
+    });
+  }
+}
+
+export async function getDistrictsByNameController(
+  req: Request,
+  res: Response
+): Promise<void> {
+  try {
+    const { name } = req.params;
+    const districts = getDistrictsByName(name);
+
+    sendApiResponse(res, {
+      data: districts,
+      message: 'Fetched districts successfully',
+    });
+  } catch (error) {
+    sendErrorResponse(res, {
+      error: error instanceof Error ? error.message : 'Unknown error',
+      message: 'Failed to get districts',
     });
   }
 }

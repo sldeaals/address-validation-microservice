@@ -11,6 +11,16 @@ async function fetchCountryData(countryCode: string) {
   }
 }
 
+export async function fetchCountriesByName(name: string) {
+  try {
+    const response = await fetch(`https://restcountries.com/v3.1/name/${name}`);
+    return await response.json();
+  } catch (error: unknown) {
+    handleError(error, 'Failed to fetch country');
+    throw error;
+  }
+}
+
 export async function getCountryByCode(countryCode: string) {
   return await fetchCountryData(countryCode);
 }

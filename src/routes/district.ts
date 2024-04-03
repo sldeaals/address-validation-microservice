@@ -2,6 +2,7 @@ import express from 'express';
 import {
   getDistrictsByCountryController,
   getDistrictsByPostalCodeController,
+  getDistrictsByNameController,
 } from '../controllers';
 
 const districtRoutes = express.Router();
@@ -30,18 +31,15 @@ const districtRoutes = express.Router();
  *       500:
  *         description: Internal server error.
  */
-districtRoutes.get('/:countryCode', getDistrictsByCountryController);
+districtRoutes.get('/country/:countryCode', getDistrictsByCountryController);
 
 /**
  * @swagger
- * tags:
- *   - name: Postal Code
- *     description: Operations related to postal codes
- * /api/postal-code/{postalCode}:
+ * /api/district/{postalCode}:
  *   get:
  *     summary: Get districts by postal code
  *     description: Retrieve districts by postal code.
- *     tags: [Postal Code]
+ *     tags: [District]
  *     parameters:
  *       - in: path
  *         name: postalCode
@@ -59,6 +57,32 @@ districtRoutes.get('/:countryCode', getDistrictsByCountryController);
  *       500:
  *         description: Internal server error.
  */
-districtRoutes.get('/:postalCode', getDistrictsByPostalCodeController);
+districtRoutes.get('/postal-code/:postalCode', getDistrictsByPostalCodeController);
+
+/**
+ * @swagger
+ * /api/district/name/{name}:
+ *   get:
+ *     summary: Get districts
+ *     description: Retrieve a list of districts.
+ *     tags: [District]
+ *     parameters:
+ *       - in: path
+ *         name: name
+ *         description: name
+ *         required: true
+ *         schema:
+ *           type: string
+ *     responses:
+ *       200:
+ *         description: Successful response with a list of districts.
+ *       400:
+ *         description: Invalid name.
+ *       404:
+ *         description: Districts not found.
+ *       500:
+ *         description: Internal server error.
+ */
+districtRoutes.get('/name/:name', getDistrictsByNameController);
 
 export default districtRoutes;

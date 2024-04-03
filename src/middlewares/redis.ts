@@ -13,11 +13,11 @@ export function createRedisClient(): Redis {
 
 export const redis = createRedisClient();
 
-export const checkCache = async (
+export async function checkCache (
   req: Request,
   res: Response,
   next: NextFunction
-) => {
+) {
   const cachedData = await redis.get(req.originalUrl);
 
   if (cachedData) {
@@ -28,4 +28,4 @@ export const checkCache = async (
   } else {
     next();
   }
-};
+}
