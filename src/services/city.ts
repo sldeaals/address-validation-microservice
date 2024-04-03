@@ -1,5 +1,10 @@
 import { cities } from '../data';
 import { City } from '../models';
+import { searchByField } from '../utils';
+
+export function getCitiesByName(name: string): City[] | [] {
+  return searchByField(cities, 'name', name);
+}
 
 export function getCitiesByCountry(countryCode: string): City[] | [] {
   return cities.filter(city => city.countryCode === countryCode);

@@ -1,5 +1,9 @@
 import { Request, Response } from 'express';
-import { getCitiesByCountry, getCitiesByPostalCode } from '../services';
+import { 
+  getCitiesByCountry,
+  getCitiesByPostalCode,
+  getCitiesByName
+} from '../services';
 import { City } from "../models";
 import {
   ApiResponse,
@@ -42,6 +46,26 @@ export async function getCitiesByPostalCodeController(
     sendErrorResponse(res, {
       error: error instanceof Error ? error.message : 'Unknown error',
       message: 'Failed to get cities by postal code',
+    });
+  }
+}
+
+export async function getCitiesByNameController(
+  req: Request,
+  res: Response
+): Promise<void> {
+  try {
+    const { name } = req.params;
+    const cities = getCitiesByName(name);
+
+    sendApiResponse(res, {
+      data: cities,
+      message: 'Fetched cities successfully',
+    });
+  } catch (error) {
+    sendErrorResponse(res, {
+      error: error instanceof Error ? error.message : 'Unknown error',
+      message: 'Failed to get cities',
     });
   }
 }
