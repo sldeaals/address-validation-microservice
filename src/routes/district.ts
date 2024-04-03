@@ -9,7 +9,7 @@ const districtRoutes = express.Router();
 
 /**
  * @swagger
- * /api/district/{countryCode}:
+ * /api/district/country/{countryCode}:
  *   get:
  *     summary: Get districts by country code
  *     description: Retrieve a list of districts by country code.
@@ -35,7 +35,7 @@ districtRoutes.get('/country/:countryCode', getDistrictsByCountryController);
 
 /**
  * @swagger
- * /api/district/{postalCode}:
+ * /api/district/postal-code/{postalCode}:
  *   get:
  *     summary: Get districts by postal code
  *     description: Retrieve districts by postal code.
