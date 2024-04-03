@@ -1,4 +1,4 @@
-import { cities } from '../data';
+import { cities } from '../mocks';
 import { City } from '../models';
 import { searchByField } from '../utils';
 

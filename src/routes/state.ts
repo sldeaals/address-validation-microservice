@@ -11,7 +11,7 @@ const stateRoutes = express.Router();
  * tags:
  *   - name: State
  *     description: Operations related to states
- * /api/state/{countryCode}:
+ * /api/state/country/{countryCode}:
  *   get:
  *     summary: Get states by country code
  *     description: Retrieve states by country code.
