@@ -1568,4 +1568,18 @@ export const cities = [
     cityId: 8,
     name: 'Villa Fundación',
   },
+  {
+    stateCode: 'NY',
+    countryCode: 'US',
+    postalCodes: ['10001', '10002', '10003'],
+    cityId: 1,
+    name: 'New York',
+  },
+  {
+    stateCode: 'CA',
+    countryCode: 'US',
+    postalCodes: ['90001', '90002', '90003'],
+    cityId: 2,
+    name: 'Los Angeles',
+  },
 ];
