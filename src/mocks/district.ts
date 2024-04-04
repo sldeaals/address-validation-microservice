@@ -4881,6 +4881,16 @@ export const districts = [
   },
   {
     countryCode: '',
+    postalCode: '',
+    name: '',
+    latitude: null,
+    longitude: null,
+    accuracy: null,
+  },
+  {
+    countryCode: 'US',
+    postalCode: '10001',
+    name: 'New York',
     latitude: null,
     longitude: null,
     accuracy: null,
