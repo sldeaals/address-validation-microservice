@@ -5,6 +5,11 @@ import {
 } from '../state';
 import { State } from '../../models';
 import { states } from '../../mocks';
+import { closeRedisClient } from '../../middlewares';
+
+afterAll(() => {
+  closeRedisClient();
+});
 
 describe('getStatesByCountryCode service function', () => {
   it('should return an array of states for the provided country code', () => {

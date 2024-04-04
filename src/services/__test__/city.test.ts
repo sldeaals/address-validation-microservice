@@ -5,6 +5,11 @@ import {
   postalCodeExistsForCity,
   getCitiesByPostalCode,
 } from '../city';
+import { closeRedisClient } from '../../middlewares';
+
+afterAll(() => {
+  closeRedisClient();
+});
 
 describe('getCitiesByName service function', () => {
   it('should return an array of cities with matching names', () => {

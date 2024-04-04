@@ -5,6 +5,11 @@ import {
   postalCodeExistsForDistrict,
   getDistrictsByName,
 } from '../district';
+import { closeRedisClient } from '../../middlewares';
+
+afterAll(() => {
+  closeRedisClient();
+});
 
 describe('getDistrictsByCountry service function', () => {
   it('should return an array of districts for the provided country code', () => {
