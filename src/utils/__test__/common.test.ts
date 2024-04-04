@@ -19,7 +19,7 @@ const searchByNameMock = [
   },
 ];
 
-describe('searchByField function', () => {
+describe('searchByField', () => {
   it('should return an array of objects matching the search term in the specified field (case insensitive)', () => {
     const searchResultByName = searchByField(testData, 'name', 'Distrito Nacional');
     expect(searchResultByName).toEqual(searchByNameMock);
@@ -31,7 +31,7 @@ describe('searchByField function', () => {
   });
 });
 
-describe('generateRandomString function', () => {
+describe('generateRandomString', () => {
   it('should generate a random string of the specified length', () => {
     const length = 10;
     const randomString = generateRandomString(length);

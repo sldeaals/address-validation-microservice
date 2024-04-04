@@ -1,6 +1,6 @@
 import { handleError } from '../errorHandler';
 
-describe('handleError function', () => {
+describe('handleError', () => {
   it('should throw an error with the provided error message', () => {
     const errorMessage = 'Test error message';
     const error = new Error('Test error');
