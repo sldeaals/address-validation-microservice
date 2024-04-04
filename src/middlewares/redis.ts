@@ -29,3 +29,10 @@ export async function checkCache (
     next();
   }
 }
+
+export function closeRedisClient(): void {
+  if (redisClient) {
+    redisClient.disconnect();
+    redisClient = null;
+  }
+}
