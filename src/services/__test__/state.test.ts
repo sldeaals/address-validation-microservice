@@ -7,11 +7,11 @@ import { State } from '../../models';
 import { states } from '../../mocks';
 import { closeRedisClient } from '../../middlewares';
 
-afterAll(() => {
-  closeRedisClient();
-});
-
 describe('getStatesByCountryCode service function', () => {
+  afterAll(async () => {
+    await closeRedisClient();
+  });
+
   it('should return an array of states for the provided country code', () => {
     const countryCode = 'DO';
     const expectedStates: State[] = states.filter(
