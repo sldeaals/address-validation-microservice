@@ -1,0 +1,4 @@
+{
+  "pattern": "^(main|dev){1}$|((hotfix|release)-\\d+\\.\\d+\\.\\d+){1}$|^(AVS-\\d+)$",
+  "errorMsg": "Invalid branch name"
+}
