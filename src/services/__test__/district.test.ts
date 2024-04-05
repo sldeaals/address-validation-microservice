@@ -7,11 +7,11 @@ import {
 } from '../district';
 import { closeRedisClient } from '../../middlewares';
 
-afterAll(() => {
-  closeRedisClient();
-});
-
 describe('getDistrictsByCountry service function', () => {
+  afterAll(async () => {
+    await closeRedisClient();
+  });
+
   it('should return an array of districts for the provided country code', () => {
     const countryCode = 'US';
     const result = getDistrictsByCountry(countryCode);

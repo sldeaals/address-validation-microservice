@@ -1,9 +1,13 @@
 import { Country } from '../../models';
 import { countries } from '../../mocks';
+import { closeRedisClient } from '../../middlewares';
 
 describe('getCountryByCode function', () => {
   afterEach(() => {
     jest.clearAllMocks();
+  });
+  afterAll(async () => {
+    await closeRedisClient();
   });
 
   it('should return country data when fetched successfully', async () => {

@@ -7,11 +7,11 @@ import {
 } from '../city';
 import { closeRedisClient } from '../../middlewares';
 
-afterAll(() => {
-  closeRedisClient();
-});
-
 describe('getCitiesByName service function', () => {
+  afterAll(async () => {
+    await closeRedisClient();
+  });
+
   it('should return an array of cities with matching names', () => {
     const name = 'Santo Domingo de Guzmán';
     const result = getCitiesByName(name);
