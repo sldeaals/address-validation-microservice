@@ -11,12 +11,16 @@ export function createRedisClient(): Redis {
   return redisClient;
 }
 
+export function getRedisClient(): Redis | null {
+  return redisClient;
+}
+
 export const redis = createRedisClient();
 
-export async function checkCache (
+export async function checkCache(
   req: Request,
   res: Response,
-  next: NextFunction
+  next: NextFunction,
 ) {
   const cachedData = await redis.get(req.originalUrl);
 
